@@ -6,6 +6,7 @@ topic = "reading/solar"
 
 def on_message(client, userdata, msg):
     print(f"Nova mensagem recebida no tópico '{msg.topic}':\n{msg.payload.decode()}")
+    return msg.payload.decode()
 
 def on_connect(client, userdata, flags, rc):
     client.subscribe(topic)

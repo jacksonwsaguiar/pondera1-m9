@@ -1,5 +1,5 @@
 from csv_reader import read_csv
-from publisher import send_mqtt_message, start
+from publisher.publisher import send_mqtt_message, start
 import time
 
 broker_address = "mqtt.eclipseprojects.io"
