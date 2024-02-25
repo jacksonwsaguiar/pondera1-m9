@@ -45,7 +45,8 @@ Testes unitarios para publisher e subscriber, onde são testados items como vali
     ```
     pytest test_cases.py
     ```
-## Demonstração
+## Demonstrações
 
-[Assista a Demonstração](https://drive.google.com/file/d/1_2yDsDVj2sjO9qUikU3xUrpuAW4xCzYP/view?usp=sharing)
+[Assista a Demonstração Local](https://drive.google.com/file/d/1_2yDsDVj2sjO9qUikU3xUrpuAW4xCzYP/view?usp=sharing)
 
+[Assista a Demonstração HiveMQ](https://drive.google.com/file/d/1ohYb8gyiSkReY6O0R_WIRcS-MGjz7nFl/view?usp=sharing)

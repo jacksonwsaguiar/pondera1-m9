@@ -1,15 +1,13 @@
 from csv_reader import read_csv
-from publisher.publisher import send_mqtt_message, start
+from publisher.instance import send_mqtt_message, start
 import time
 
-broker_address = "mqtt.eclipseprojects.io"
-port = 1883
 topic = "reading/solar" 
 
 file = 'simulation.csv'
 data = read_csv(file)
 
-mqtt_client = start(broker_address, port)
+mqtt_client = start()
 
 try:
     for single in data:

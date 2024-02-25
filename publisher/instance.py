@@ -1,7 +1,8 @@
-import paho.mqtt.client as mqtt
+import sys
+sys.path.append("..")
+from my_paho.client_paho import create_client
 
-
-def on_connect(client, userdata, flags, rc):
+def on_connect(client, userdata, flags, rc,properties=None):
     print("Conectado com código de resultado: " + str(rc))
 
 def send_mqtt_message(client, topic, msg):
@@ -16,10 +17,8 @@ def send_mqtt_message(client, topic, msg):
         print("Desconectado do broker MQTT")
 
 
-def start(broker_address, port):
-    client = mqtt.Client()
-    client.on_connect = on_connect
-    client.connect(broker_address, port, 60)
+def start():
+    client = create_client(on_connect, on_message=None)
     client.loop_start()
     return client
 

@@ -1,7 +1,7 @@
-import paho.mqtt.client as mqtt
 import time
-import pytest
-from publisher import send_mqtt_message, start
+from publisher.instance import send_mqtt_message, start
+from my_paho.client_paho import create_client
+
 
 broker_address = "mqtt.eclipseprojects.io"
 port = 1883
@@ -14,9 +14,7 @@ def on_message(client, userdata, msg):
     received_messages.append(msg.payload.decode())
 
 def create_subscriber(broker_address, topic, port):
-    client = mqtt.Client()
-    client.on_message = on_message
-    client.connect(broker_address, port, 60)
+    client = create_client(on_connect=None, on_message=on_message)
     client.subscribe(topic)
     return client
 
@@ -24,20 +22,20 @@ def test_publisher_data():
     print("Testing confirm data sent and data validation")
     msg = '{"period":"night","radiation_intensity": "841.7"}'
 
-    client = create_subscriber(broker_address,topic, port)
+    sub_client = create_subscriber(broker_address,topic, port)
 
-    mqtt_client = start(broker_address, port)
+    mqtt_client = start()
 
     send_mqtt_message(mqtt_client, topic, msg)
 
     time.sleep(5)
   
-    client.loop_start()
+    sub_client.loop_start()
     time.sleep(10)
-    client.loop_stop()
+    sub_client.loop_stop()
 
     mqtt_client.disconnect()
-    client.disconnect()
+    sub_client.disconnect()
 
     print("Received messages:", received_messages)
 
@@ -59,15 +57,12 @@ def test_perform_mqtt_test():
 
     start_time = time.time()
     
-    client = mqtt.Client()
-    client.on_message = on_message_perform
+    client = create_client(on_connect=None, on_message=on_message_perform)
 
     try:
-        client.connect(broker_address, port, 60)
         client.subscribe(topic)
-
         client.loop_start()
-
+        
         time.sleep(test_duration)
 
         client.loop_stop()
