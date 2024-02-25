@@ -34,14 +34,11 @@ O sensor de radiação solar HOBOnet RXW-LIB-900 é utilizado para medir a inten
     python3 subscriber.py
     ```
 ## Tests
-Testes unitarios para publisher e subscriber, onde são testados items como validação de envio e recebimento de mensagem, e perfomance do subscriber.
+Testes unitarios de casos para publisher e subscriber, onde são testados items como validação de envio e recebimento de mensagem, e perfomance do subscriber.
 
 ### Para executar
-1. Entre na pasta publisher:
-    ```
-    cd publisher
-    ```
-2. Execute o script de teste todos os casos:
+
+1. Execute o script de teste todos os casos:
     ```
     pytest test_cases.py
     ```
