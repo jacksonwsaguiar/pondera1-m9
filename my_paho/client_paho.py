@@ -1,3 +1,6 @@
+import sys
+sys.path.append("..")
+
 import paho.mqtt.client as mqtt
 
 host = "0461d3bb20f749cd936e6566a4b00c44.s1.eu.hivemq.cloud"

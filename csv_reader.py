@@ -1,14 +1,14 @@
 import csv
 
 class CSVData:
-    def __init__(self, period, env_tempeture, date_time, radiation_intensity):
+    def __init__(self, period, env_temperature, date_time, radiation_intensity):
         self.period = period
-        self.env_tempeture = env_tempeture
+        self.env_temperature = env_temperature
         self.date_time = date_time
         self.radiation_intensity = radiation_intensity
 
     def __str__(self):
-        return f'Periodo: {self.period}\nTemperatura ambiente: {self.env_tempeture}\nData e hora: {self.date_time}\nIntensidade da radiação: {self.radiation_intensity}\n'
+      return f'{{"period": "{self.period}", "env_temperature": "{self.env_temperature}", "date_time": "{self.date_time}", "radiation_intensity": "{self.radiation_intensity}"}}'
 
 def read_csv(file):
     data = []

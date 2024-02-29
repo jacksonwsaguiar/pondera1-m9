@@ -1,4 +1,4 @@
-period,env_tempeture,date_time,radiation_intensity
+period,env_temperature,date_time,radiation_intensity
 night,20,2021-05-27,841.7
 night,35,2023-09-12,281.1
 morning,38,2020-07-01,302.8
