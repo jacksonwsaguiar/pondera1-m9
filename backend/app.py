@@ -1,40 +1,32 @@
 from flask import Flask, jsonify, request
-from flask_sqlalchemy import SQLAlchemy
+
+import pymongo
+from pymongo.server_api import ServerApi
+from pymongo import MongoClient
 
 app = Flask(__name__)
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
-db = SQLAlchemy(app)
+uri = "mongodb+srv://jacksonaguiar:SETuWqupEulsU25F@cluster0.zkykwzk.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
 
-class SensorInfo(db.Model):
-    id = db.Column(db.Integer, primary_key=True,autoincrement=True)
-    period = db.Column(db.String(100), nullable=False)
-    env_temperature = db.Column(db.String(100), nullable=False)
-    date_time = db.Column(db.String(100), nullable=False)
-    radiation_intensity = db.Column(db.String(100), nullable=False)
-
-with app.app_context():
-    db.create_all()
-
+cluster = MongoClient(uri)
+db = cluster["ponderada"]
 
 @app.route('/save-info', methods=['POST'])
 def create_info():
+    collection = db["sensor_data"]
     try:
         new_info = request.get_json()
 
-        # Check if new_info is a dictionary
         if not isinstance(new_info, dict):
             raise ValueError('Invalid JSON data. Expected a dictionary.')
-
-        new_sensor_info = SensorInfo(
-            period=new_info.get('period', ''),
-            env_temperature=new_info.get('env_temperature', ''),
-            date_time=new_info.get('date_time', ''),
-            radiation_intensity=new_info.get('radiation_intensity', '')
-        )
-
-        db.session.add(new_sensor_info)
-        db.session.commit()
+        
+        period=new_info.get('period', '')
+        temp=new_info.get('env_temperature', '')
+        dt=new_info.get('date_time', '')
+        rad=new_info.get('radiation_intensity', '')
+        
+        collection.insert_one({"period":period, "env_temperature":temp, "date_time":dt,"radiation_intensity":rad})
+  
         
         return '',201
     except Exception as e:

@@ -57,3 +57,5 @@ Testes unitarios de casos para publisher e subscriber, onde são testados items 
 [Assista a Demonstração HiveMQ](https://drive.google.com/file/d/1ohYb8gyiSkReY6O0R_WIRcS-MGjz7nFl/view?usp=sharing)
 
 [Assista a Demonstração HiveMQ + SQLite + Metabase](https://drive.google.com/file/d/1OfW7q1xxL9UAdOPFriOfYPMLP8aSQkXc/view?usp=sharing)
+
+[Assista a Demonstração de Integração com o MongoDB ATLAS](https://drive.google.com/file/d/1_tfJLH-iWzTHQLmx8D2jOBfVqMEQdcW7/view?usp=sharing)
