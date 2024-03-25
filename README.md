@@ -29,7 +29,7 @@ O sensor de radiação solar HOBOnet RXW-LIB-900 é utilizado para medir a inten
     ```
     python3 main.py
     ```
-3. Execute o script `instance.py` para iniciar o subscriber e receber mensagens.
+3. Execute o script `instance.py` para iniciar o consumer(subscriber) e receber mensagens.
     ```
     python3 subscriber/instance.py
     ```
@@ -59,3 +59,5 @@ Testes unitarios de casos para publisher e subscriber, onde são testados items 
 [Assista a Demonstração HiveMQ + SQLite + Metabase](https://drive.google.com/file/d/1OfW7q1xxL9UAdOPFriOfYPMLP8aSQkXc/view?usp=sharing)
 
 [Assista a Demonstração de Integração com o MongoDB ATLAS](https://drive.google.com/file/d/1_tfJLH-iWzTHQLmx8D2jOBfVqMEQdcW7/view?usp=sharing)
+
+[Assista a Demonstração de Integração com o Consumer Confluent Cloud](https://drive.google.com/file/d/15h62QEuevwEFSLAaKx8pirB_ccFdWvPP/view?usp=sharing)
